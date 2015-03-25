@@ -55,12 +55,49 @@ public class Sorts
 
   private void merge(int[] a, int first, int mid, int last)
   {
-    //your code here
+    int c [] = new int [a.length];
+    mid = (first + last)/2;
+    int ai = first;
+    int bi = mid +1;
+
+  for(int i = first; i < last; i++)
+  {
+     if(ai >= a.length)
+     {
+        c[i] = a[ai];
+        ai++;
+     }
+     else if(bi >= a.length)
+     {
+        c[i] = a[ai];
+        ai++;
+     }
+     else if(a[ai] <= a[bi])
+     {
+        c[i] = a[ai];
+        ai++;
+     }
+     else if(a[bi] < a[ai])
+     {
+        c[i] = a[bi];
+        bi++;
+     }
+    }
+    for(int j = first; j < last; j++)
+    {
+      c[j] = a[j];
+    }
   }
 
   public void mergeSort(int[] a, int first, int last)
   {
-    //your code here
+    int mid = (first + last)/2;
+    if(first < last)
+    {
+      mergeSort(a, first, mid);
+      mergeSort(a, mid + 1, last);
+    }
+    merge(a, first, mid + 1, last);
   }
 }
 
